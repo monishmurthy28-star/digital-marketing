@@ -1,70 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AurneO Digital</title>
+<title>AURNEO DIGITAL</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body {
+
+*{
   margin:0;
-  font-family: system-ui;
-  background:#050816;
-  color:white;
-  overflow:hidden;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
-/* canvas background */
-canvas {
+body{
+  font-family:'Poppins',sans-serif;
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* Animated Background */
+
+canvas{
   position:fixed;
   top:0;
   left:0;
   z-index:-1;
 }
 
-/* HERO */
-.hero {
-  height:100vh;
+/* Navbar */
+
+nav{
+  width:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  padding:22px 8%;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
+  justify-content:space-between;
   align-items:center;
-  text-align:center;
-  padding:20px;
+  z-index:999;
+  backdrop-filter:blur(12px);
+  background:rgba(5,8,22,0.5);
 }
 
-h1 {
-  font-size:70px;
+.logo{
+  font-size:28px;
+  font-weight:700;
   background:linear-gradient(90deg,#22d3ee,#a855f7,#60a5fa);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-p {
-  max-width:650px;
-  opacity:0.8;
-  font-size:18px;
-  line-height:1.6;
+nav ul{
+  display:flex;
+  gap:35px;
+  list-style:none;
 }
 
-.btn {
-  margin-top:20px;
-  padding:14px 28px;
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-size:15px;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  color:#22d3ee;
+}
+
+/* Hero */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:120px 20px 80px;
+}
+
+.hero-content{
+  max-width:950px;
+}
+
+.hero h1{
+  font-size:82px;
+  line-height:1.1;
+  margin-bottom:25px;
+  background:linear-gradient(90deg,#22d3ee,#a855f7,#60a5fa);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:float 3s ease-in-out infinite;
+}
+
+.hero p{
+  font-size:20px;
+  line-height:1.8;
+  opacity:0.85;
+  margin-bottom:35px;
+}
+
+/* Buttons */
+
+.buttons{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 35px;
   border:none;
   border-radius:999px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.4s;
+  font-weight:600;
+}
+
+.btn-primary{
   background:linear-gradient(90deg,#7c3aed,#06b6d4);
+  color:white;
+  box-shadow:0 0 30px rgba(124,58,237,0.5);
+}
+
+.btn-primary:hover{
+  transform:translateY(-5px) scale(1.05);
+}
+
+.btn-secondary{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.2);
   color:white;
 }
 
-/* sections */
-.section {
-  position:absolute;
-  bottom:40px;
-  width:100%;
-  text-align:center;
-  opacity:0.85;
-  font-size:14px;
+.btn-secondary:hover{
+  background:white;
+  color:black;
 }
+
+/* Floating Cards */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:70px 8%;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:25px;
+  padding:35px;
+  backdrop-filter:blur(12px);
+  transition:0.5s;
+  transform-style:preserve-3d;
+}
+
+.card:hover{
+  transform:rotateY(10deg) rotateX(10deg) translateY(-10px);
+  border-color:#22d3ee;
+}
+
+.card h3{
+  margin-bottom:15px;
+  font-size:24px;
+}
+
+.card p{
+  opacity:0.75;
+  line-height:1.7;
+}
+
+/* Services */
+
+.section-title{
+  text-align:center;
+  font-size:48px;
+  margin-top:80px;
+  margin-bottom:20px;
+}
+
+.section-sub{
+  text-align:center;
+  opacity:0.7;
+  max-width:700px;
+  margin:auto;
+  line-height:1.7;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  padding:70px 8%;
+}
+
+.service{
+  padding:35px;
+  border-radius:25px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.5s;
+}
+
+.service:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(34,211,238,0.2);
+}
+
+.service h3{
+  margin-bottom:18px;
+  font-size:24px;
+}
+
+/* Stats */
+
+.stats{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+  padding:60px 8%;
+}
+
+.stat-box{
+  width:230px;
+  text-align:center;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.05);
+}
+
+.stat-box h2{
+  font-size:42px;
+  color:#22d3ee;
+}
+
+/* Contact */
+
+.contact{
+  padding:100px 8%;
+  text-align:center;
+}
+
+.contact-box{
+  max-width:850px;
+  margin:auto;
+  padding:50px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact h2{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.contact p{
+  opacity:0.75;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+.contact-info{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  margin-top:40px;
+}
+
+.contact-item{
+  background:rgba(255,255,255,0.04);
+  padding:20px 25px;
+  border-radius:18px;
+  min-width:240px;
+}
+
+/* Footer */
+
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:0.6;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* Animations */
+
+@keyframes float{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0px);}
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+  nav ul{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .section-title{
+    font-size:36px;
+  }
+
+}
+
 </style>
 </head>
 
@@ -72,17 +333,215 @@ p {
 
 <canvas id="bg"></canvas>
 
-<div class="hero">
-  <h1>AurneO Digital</h1>
-  <p>AI-powered marketing systems that generate leads, automate growth, and scale businesses using high-conversion digital funnels.</p>
-  <button class="btn">Get Started</button>
-</div>
+<!-- NAVBAR -->
 
-<div class="section">
-  🚀 Meta Ads | AI Funnels | Lead Generation | SaaS Landing Pages
-</div>
+<nav>
+  <div class="logo">AURNEO DIGITAL</div>
+
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Scale Your Business With AI-Powered Marketing</h1>
+
+    <p>
+      AurneO Digital helps brands generate premium leads, automate sales,
+      dominate social media, and build high-converting digital experiences
+      using AI funnels, Meta ads, automation systems, and cinematic websites.
+    </p>
+
+    <div class="buttons">
+
+      <button class="btn btn-primary"
+      onclick="window.location.href='https://wa.me/919655117432'">
+      Book Free Strategy Call
+      </button>
+
+      <button class="btn btn-secondary"
+      onclick="document.getElementById('services').scrollIntoView()">
+      Explore Services
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CARDS -->
+
+<section class="cards" id="about">
+
+  <div class="card">
+    <h3>🚀 Lead Generation</h3>
+    <p>
+      High-converting ad systems designed to bring qualified leads directly to your business daily.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>🤖 AI Automation</h3>
+    <p>
+      Automate follow-ups, appointments, and customer communication using AI workflows.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>🎬 Premium Branding</h3>
+    <p>
+      Cinematic websites, luxury branding, and modern UI/UX that makes your business stand out.
+    </p>
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<h2 class="section-title" id="services">Our Services</h2>
+
+<p class="section-sub">
+We build complete digital growth ecosystems for brands, startups,
+medical clinics, real estate companies, and high-ticket businesses.
+</p>
+
+<section class="services">
+
+  <div class="service">
+    <h3>Meta Ads Management</h3>
+    <p>
+      Facebook and Instagram campaigns optimized for maximum ROI,
+      lead generation, and customer acquisition.
+    </p>
+  </div>
+
+  <div class="service">
+    <h3>Website Development</h3>
+    <p>
+      Ultra-modern animated websites with premium UI, motion effects,
+      fast performance, and mobile optimization.
+    </p>
+  </div>
+
+  <div class="service">
+    <h3>Social Media Growth</h3>
+    <p>
+      Viral content strategies, reels optimization, branding, and
+      engagement systems to grow your audience.
+    </p>
+  </div>
+
+  <div class="service">
+    <h3>Google Ads</h3>
+    <p>
+      Generate high-intent leads through powerful search campaigns
+      targeting customers actively searching for your service.
+    </p>
+  </div>
+
+  <div class="service">
+    <h3>AI Sales Funnels</h3>
+    <p>
+      Smart automated funnels that convert visitors into customers
+      using landing pages and AI follow-up systems.
+    </p>
+  </div>
+
+  <div class="service">
+    <h3>Video Editing & Creatives</h3>
+    <p>
+      High-quality cinematic reels, advertisements, and branding visuals
+      designed to increase engagement and conversions.
+    </p>
+  </div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+  <div class="stat-box">
+    <h2>250+</h2>
+    <p>Campaigns Managed</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>10M+</h2>
+    <p>Ad Impressions</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>95%</h2>
+    <p>Client Satisfaction</p>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <div class="contact-box">
+
+    <h2>Let's Grow Your Brand</h2>
+
+    <p>
+      Ready to scale your business with premium digital marketing?
+      Contact AurneO Digital today and let's build your next viral brand.
+    </p>
+
+    <div class="buttons">
+
+      <button class="btn btn-primary"
+      onclick="window.location.href='mailto:contact.aurneoai.automation@gmail.com'">
+      Email Us
+      </button>
+
+      <button class="btn btn-secondary"
+      onclick="window.location.href='https://instagram.com/'">
+      Instagram
+      </button>
+
+    </div>
+
+    <div class="contact-info">
+
+      <div class="contact-item">
+        📧 contact.aurneoai.automation@gmail.com
+      </div>
+
+      <div class="contact-item">
+        📱 +91 9655117432
+      </div>
+
+      <div class="contact-item">
+        🌍 www.aurneodigital.in
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 AurneO Digital — AI Powered Marketing Agency
+</footer>
 
 <script>
+
+/* PARTICLE BACKGROUND */
+
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
@@ -91,36 +550,50 @@ canvas.height = window.innerHeight;
 
 let particles = [];
 
-for(let i=0;i<120;i++){
+for(let i=0;i<150;i++){
+
   particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    dx:(Math.random()-0.5)*1.2,
-    dy:(Math.random()-0.5)*1.2
+    r:Math.random()*2.5,
+    dx:(Math.random()-0.5)*1.5,
+    dy:(Math.random()-0.5)*1.5
   });
+
 }
 
 function animate(){
+
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   for(let p of particles){
+
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(124,58,237,0.5)";
+    ctx.fillStyle="rgba(34,211,238,0.7)";
     ctx.fill();
 
     p.x += p.dx;
     p.y += p.dy;
 
-    if(p.x<0||p.x>canvas.width)p.dx*=-1;
-    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    if(p.x<0 || p.x>canvas.width) p.dx *= -1;
+    if(p.y<0 || p.y>canvas.height) p.dy *= -1;
+
   }
 
   requestAnimationFrame(animate);
+
 }
 
 animate();
+
+window.addEventListener("resize",()=>{
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+});
+
 </script>
 
 </body>
