@@ -1,203 +1,263 @@
+# Replace Your `index.html` With This Gaming-Style Website Code
+
+Copy EVERYTHING below and paste it into your `index.html` file.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurneo Digital</title>
 
-    <title>Aurneo Digital</title>
+  <style>
 
-    <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+    body{
+      font-family:Arial, sans-serif;
+      background:black;
+      color:white;
+      overflow-x:hidden;
+    }
 
-        body{
-            font-family:Arial, sans-serif;
-            background:#0f0f0f;
-            color:white;
-        }
+    body::before{
+      content:"";
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top left,#00ffcc22,transparent 25%),
+      radial-gradient(circle at bottom right,#ff00ff22,transparent 25%),
+      radial-gradient(circle at center,#00aaff11,transparent 35%);
+      z-index:-1;
+      animation:moveBg 8s infinite alternate;
+    }
 
-        .hero{
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            padding:20px;
-            background:linear-gradient(135deg,#111,#1f1f1f,#000);
-        }
+    @keyframes moveBg{
+      from{
+        transform:scale(1);
+      }
 
-        .hero h1{
-            font-size:60px;
-            margin-bottom:20px;
-            animation:fadeIn 2s ease;
-        }
+      to{
+        transform:scale(1.1);
+      }
+    }
 
-        .hero p{
-            max-width:700px;
-            font-size:20px;
-            line-height:1.6;
-            margin-bottom:30px;
-            animation:fadeIn 3s ease;
-        }
+    .hero{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
 
-        .btn{
-            background:#00ff99;
-            color:black;
-            padding:15px 35px;
-            border-radius:50px;
-            text-decoration:none;
-            font-weight:bold;
-            transition:0.3s;
-        }
+    .hero h1{
+      font-size:80px;
+      color:#00ffcc;
+      text-shadow:0 0 20px #00ffcc;
+      margin-bottom:20px;
+      animation:glow 2s infinite alternate;
+    }
 
-        .btn:hover{
-            transform:scale(1.1);
-            background:white;
-        }
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #00ffcc;
+      }
 
-        .services{
-            padding:80px 20px;
-            text-align:center;
-        }
+      to{
+        text-shadow:0 0 30px #00ffcc;
+      }
+    }
 
-        .services h2{
-            font-size:40px;
-            margin-bottom:50px;
-        }
+    .hero p{
+      max-width:700px;
+      font-size:22px;
+      line-height:1.6;
+      color:#cccccc;
+      margin-bottom:40px;
+    }
 
-        .cards{
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:center;
-            gap:30px;
-        }
+    .btn{
+      background:#00ffcc;
+      color:black;
+      padding:16px 40px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+      box-shadow:0 0 20px #00ffcc;
+    }
 
-        .card{
-            background:#1b1b1b;
-            width:300px;
-            padding:30px;
-            border-radius:20px;
-            transition:0.4s;
-        }
+    .btn:hover{
+      transform:scale(1.1);
+      background:white;
+      box-shadow:0 0 40px white;
+    }
 
-        .card:hover{
-            transform:translateY(-10px);
-            box-shadow:0 0 20px rgba(0,255,153,0.4);
-        }
+    .services{
+      padding:100px 20px;
+      text-align:center;
+    }
 
-        .card h3{
-            margin-bottom:15px;
-            color:#00ff99;
-        }
+    .services h2{
+      font-size:50px;
+      color:#00ffcc;
+      margin-bottom:60px;
+    }
 
-        .contact{
-            padding:80px 20px;
-            text-align:center;
-            background:#111;
-        }
+    .cards{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:30px;
+    }
 
-        .contact h2{
-            margin-bottom:20px;
-            font-size:40px;
-        }
+    .card{
+      width:300px;
+      background:#111111;
+      border:1px solid #00ffcc44;
+      padding:30px;
+      border-radius:20px;
+      transition:0.4s;
+      backdrop-filter:blur(10px);
+    }
 
-        .contact a{
-            color:#00ff99;
-            text-decoration:none;
-        }
+    .card:hover{
+      transform:translateY(-15px) scale(1.03);
+      box-shadow:0 0 25px #00ffcc66;
+    }
 
-        @keyframes fadeIn{
-            from{
-                opacity:0;
-                transform:translateY(30px);
-            }
+    .card h3{
+      color:#00ffcc;
+      margin-bottom:20px;
+      font-size:28px;
+    }
 
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
-        }
+    .card p{
+      color:#bbbbbb;
+      line-height:1.6;
+    }
 
-    </style>
+    .contact{
+      padding:100px 20px;
+      text-align:center;
+    }
+
+    .contact h2{
+      font-size:45px;
+      color:#00ffcc;
+      margin-bottom:30px;
+    }
+
+    .contact a{
+      color:white;
+      text-decoration:none;
+      display:inline-block;
+      margin:15px;
+      padding:15px 30px;
+      border:1px solid #00ffcc;
+      border-radius:50px;
+      transition:0.3s;
+    }
+
+    .contact a:hover{
+      background:#00ffcc;
+      color:black;
+      box-shadow:0 0 20px #00ffcc;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:50px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
 
-    <section class="hero">
+  <section class="hero">
 
-        <h1>Aurneo Digital</h1>
+    <h1>Aurneo Digital</h1>
 
+    <p>
+      Futuristic digital marketing solutions for brands that want explosive growth.
+      We create high-converting Meta Ads, lead generation systems, and powerful online branding.
+    </p>
+
+    <a class="btn" href="https://wa.me/919655117432">
+      Start Scaling
+    </a>
+
+  </section>
+
+  <section class="services">
+
+    <h2>Our Services</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Meta Ads</h3>
         <p>
-            We help businesses scale through high-converting Meta Ads,
-            SEO, lead generation, and social media marketing.
+          High-performance Facebook and Instagram campaigns designed to generate leads and sales.
         </p>
+      </div>
 
-        <a class="btn" href="https://wa.me/919655117432">
-            Get Free Consultation
-        </a>
-
-    </section>
-
-    <section class="services">
-
-        <h2>Our Services</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Meta Ads</h3>
-                <p>
-                    High-converting Facebook & Instagram ads
-                    to generate quality leads.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>SEO</h3>
-                <p>
-                    Improve your Google rankings and
-                    attract organic customers.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Lead Generation</h3>
-                <p>
-                    We help businesses generate
-                    high-quality leads consistently.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="contact">
-
-        <h2>Contact Us</h2>
-
+      <div class="card">
+        <h3>SEO</h3>
         <p>
-            <a href="https://instagram.com/aurneomonish">
-                Instagram
-            </a>
+          Dominate Google rankings and increase your business visibility organically.
         </p>
+      </div>
 
-        <br>
-
+      <div class="card">
+        <h3>Lead Generation</h3>
         <p>
-            <a href="https://wa.me/919655117432">
-                WhatsApp
-            </a>
+          Build a consistent flow of qualified customers through optimized funnels.
         </p>
+      </div>
 
-    </section>
+    </div>
+
+  </section>
+
+  <section class="contact">
+
+    <h2>Connect With Us</h2>
+
+    <a href="https://instagram.com/aurneomonish">
+      Instagram
+    </a>
+
+    <a href="https://wa.me/919655117432">
+      WhatsApp
+    </a>
+
+  </section>
 
 </body>
-
 </html>
+```
+
+After pasting:
+
+1. Scroll down
+2. Click `Commit changes`
+3. Refresh your website
+4. Press `Ctrl + Shift + R` for hard refresh
