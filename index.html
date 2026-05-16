@@ -1,235 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AurneO Digital</title>
 
 <style>
-/* =======================
-   BASE
-======================= */
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #050816;
-  color: white;
-  overflow-x: hidden;
+  margin:0;
+  font-family: system-ui;
+  background:#050816;
+  color:white;
+  overflow:hidden;
 }
 
-/* =======================
-   ANIMATED BACKGROUND
-======================= */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background: radial-gradient(circle at 20% 20%, #7c3aed55, transparent 40%),
-              radial-gradient(circle at 80% 30%, #06b6d455, transparent 40%),
-              radial-gradient(circle at 50% 80%, #22d3ee33, transparent 40%);
-  animation: moveBg 12s ease-in-out infinite alternate;
+/* canvas background */
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
-@keyframes moveBg {
-  from { transform: scale(1) rotate(0deg); }
-  to { transform: scale(1.1) rotate(2deg); }
-}
-
-/* floating blobs */
-.blob {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: #7c3aed55;
-  filter: blur(80px);
-  border-radius: 50%;
-  animation: float 8s infinite ease-in-out;
-}
-
-.blob:nth-child(1){ top:10%; left:10%; }
-.blob:nth-child(2){ bottom:10%; right:10%; background:#06b6d455; }
-
-@keyframes float {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-40px); }
-}
-
-/* =======================
-   HERO
-======================= */
+/* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
 
 h1 {
-  font-size: 72px;
-  background: linear-gradient(90deg,#22d3ee,#a855f7,#60a5fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glow 4s infinite ease-in-out;
-}
-
-@keyframes glow {
-  0%,100% { filter: drop-shadow(0 0 10px #7c3aed); }
-  50% { filter: drop-shadow(0 0 25px #06b6d4); }
+  font-size:70px;
+  background:linear-gradient(90deg,#22d3ee,#a855f7,#60a5fa);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 p {
-  max-width: 700px;
-  opacity: 0.8;
-  font-size: 18px;
-  line-height: 1.6;
+  max-width:650px;
+  opacity:0.8;
+  font-size:18px;
+  line-height:1.6;
 }
 
-/* =======================
-   BUTTON
-======================= */
 .btn {
-  margin-top: 20px;
-  padding: 14px 28px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(90deg,#7c3aed,#06b6d4);
-  color: white;
-  cursor: pointer;
-  transition: 0.4s;
+  margin-top:20px;
+  padding:14px 28px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(90deg,#7c3aed,#06b6d4);
+  color:white;
 }
 
-.btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px #7c3aed;
-}
-
-/* =======================
-   CARDS (AI SaaS STYLE)
-======================= */
+/* sections */
 .section {
-  padding: 100px 20px;
-  text-align: center;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  width: 270px;
-  padding: 25px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  transition: 0.4s;
-  transform-style: preserve-3d;
-}
-
-.card:hover {
-  transform: translateY(-15px) rotateX(8deg) rotateY(6deg);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-/* =======================
-   SCROLL FADE ANIMATION
-======================= */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =======================
-   CONTACT
-======================= */
-.contact {
-  padding: 100px 20px;
-  text-align: center;
-}
-
-input, textarea {
-  width: 80%;
-  max-width: 420px;
-  padding: 12px;
-  margin: 8px;
-  border-radius: 12px;
-  border: none;
-}
-
-/* WHATSAPP */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 15px 18px;
-  border-radius: 50px;
-  color: white;
-  text-decoration: none;
+  position:absolute;
+  bottom:40px;
+  width:100%;
+  text-align:center;
+  opacity:0.85;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg">
-  <div class="blob"></div>
-  <div class="blob"></div>
-</div>
+<canvas id="bg"></canvas>
 
-<div class="hero fade">
+<div class="hero">
   <h1>AurneO Digital</h1>
-  <p>
-    AI-powered marketing systems, high-converting funnels, and ad strategies
-    that turn attention into revenue.
-  </p>
-  <button class="btn">Start Growth Engine</button>
+  <p>AI-powered marketing systems that generate leads, automate growth, and scale businesses using high-conversion digital funnels.</p>
+  <button class="btn">Get Started</button>
 </div>
 
-<div class="section fade">
-  <h2>AI-Level Services</h2>
-  <div class="cards">
-    <div class="card">🚀 AI Ad Campaigns</div>
-    <div class="card">📈 Lead Automation Systems</div>
-    <div class="card">🧠 Conversion Psychology Funnels</div>
-    <div class="card">💻 SaaS Landing Pages</div>
-  </div>
+<div class="section">
+  🚀 Meta Ads | AI Funnels | Lead Generation | SaaS Landing Pages
 </div>
-
-<div class="contact fade">
-  <h2>Contact Us</h2>
-  <input placeholder="Name"><br>
-  <input placeholder="Email"><br>
-  <textarea placeholder="Message"></textarea><br>
-  <button class="btn">Send</button>
-</div>
-
-<a class="whatsapp" href="https://wa.me/919655117432">WhatsApp</a>
 
 <script>
-/* scroll reveal */
-const elements = document.querySelectorAll('.fade');
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
 
-window.addEventListener('scroll', () => {
-  elements.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add('show');
-    }
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<120;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    dx:(Math.random()-0.5)*1.2,
+    dy:(Math.random()-0.5)*1.2
   });
-});
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let p of particles){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(124,58,237,0.5)";
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 
 </body>
