@@ -1,112 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AurneO Digital</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AurneO Digital</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
+/* =======================
+   BASE
+======================= */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #050816;
+  color: white;
+  overflow-x: hidden;
+}
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
+/* =======================
+   ANIMATED BACKGROUND
+======================= */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 20% 20%, #7c3aed55, transparent 40%),
+              radial-gradient(circle at 80% 30%, #06b6d455, transparent 40%),
+              radial-gradient(circle at 50% 80%, #22d3ee33, transparent 40%);
+  animation: moveBg 12s ease-in-out infinite alternate;
+}
 
-    h1 {
-      font-size: 60px;
-      background: linear-gradient(90deg, #00f5ff, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: float 3s ease-in-out infinite;
-    }
+@keyframes moveBg {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1.1) rotate(2deg); }
+}
 
-    p {
-      font-size: 18px;
-      opacity: 0.8;
-      max-width: 600px;
-    }
+/* floating blobs */
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #7c3aed55;
+  filter: blur(80px);
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+}
 
-    .btn {
-      margin-top: 20px;
-      padding: 12px 24px;
-      border-radius: 30px;
-      border: none;
-      background: #a855f7;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.blob:nth-child(1){ top:10%; left:10%; }
+.blob:nth-child(2){ bottom:10%; right:10%; background:#06b6d455; }
 
-    .btn:hover {
-      transform: scale(1.1);
-      background: #00f5ff;
-      color: black;
-    }
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-40px); }
+}
 
-    /* CARDS */
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
+/* =======================
+   HERO
+======================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+h1 {
+  font-size: 72px;
+  background: linear-gradient(90deg,#22d3ee,#a855f7,#60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 4s infinite ease-in-out;
+}
 
-    .card {
-      width: 250px;
-      padding: 20px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      transition: 0.3s;
-    }
+@keyframes glow {
+  0%,100% { filter: drop-shadow(0 0 10px #7c3aed); }
+  50% { filter: drop-shadow(0 0 25px #06b6d4); }
+}
 
-    .card:hover {
-      transform: translateY(-10px) rotateX(10deg);
-      background: rgba(255,255,255,0.1);
-    }
+p {
+  max-width: 700px;
+  opacity: 0.8;
+  font-size: 18px;
+  line-height: 1.6;
+}
 
-    @keyframes float {
-      0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-  </style>
+/* =======================
+   BUTTON
+======================= */
+.btn {
+  margin-top: 20px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg,#7c3aed,#06b6d4);
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #7c3aed;
+}
+
+/* =======================
+   CARDS (AI SaaS STYLE)
+======================= */
+.section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 270px;
+  padding: 25px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  transform: translateY(-15px) rotateX(8deg) rotateY(6deg);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* =======================
+   SCROLL FADE ANIMATION
+======================= */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =======================
+   CONTACT
+======================= */
+.contact {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+input, textarea {
+  width: 80%;
+  max-width: 420px;
+  padding: 12px;
+  margin: 8px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* WHATSAPP */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  padding: 15px 18px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="hero">
-    <h1>AurneO Digital</h1>
-    <p>We build high-converting digital marketing systems, ads, and websites that bring real clients.</p>
-    <button class="btn">Get Started</button>
-  </div>
+<div class="bg">
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
 
-  <div class="section">
-    <h2>Our Services</h2>
-    <div class="cards">
-      <div class="card">Meta Ads Growth</div>
-      <div class="card">Lead Generation</div>
-      <div class="card">SEO Optimization</div>
-      <div class="card">Website Development</div>
-    </div>
+<div class="hero fade">
+  <h1>AurneO Digital</h1>
+  <p>
+    AI-powered marketing systems, high-converting funnels, and ad strategies
+    that turn attention into revenue.
+  </p>
+  <button class="btn">Start Growth Engine</button>
+</div>
+
+<div class="section fade">
+  <h2>AI-Level Services</h2>
+  <div class="cards">
+    <div class="card">🚀 AI Ad Campaigns</div>
+    <div class="card">📈 Lead Automation Systems</div>
+    <div class="card">🧠 Conversion Psychology Funnels</div>
+    <div class="card">💻 SaaS Landing Pages</div>
   </div>
+</div>
+
+<div class="contact fade">
+  <h2>Contact Us</h2>
+  <input placeholder="Name"><br>
+  <input placeholder="Email"><br>
+  <textarea placeholder="Message"></textarea><br>
+  <button class="btn">Send</button>
+</div>
+
+<a class="whatsapp" href="https://wa.me/919655117432">WhatsApp</a>
+
+<script>
+/* scroll reveal */
+const elements = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  elements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
